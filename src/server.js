@@ -1,21 +1,6 @@
 import http from 'node:http'
 
-// - Criar usuários
-// - Listar usuários
-// - Editar usuários
-// - Remover usuários
 
-// - HTTP
-//   - Método HTTP
-//   - URL
-
-// GET, PUT, POST, PATHC, DELETE 
-
-// - GET => Buscar uma recurso do back-end
-// - POST => Criar uma recurso no back-end
-// - PUT => Editar / atualizar uma recurso no back-end
-// - PATCH => Atualizar uma informação específica de um recurso no back-end
-// - DELETE => Deletar um recurso do back-end
 
 const users = []
 
@@ -34,10 +19,10 @@ const server = http.createServer((req, res) => {
       name: 'Joe Doe',
       email: 'joe@example.com'
     })
-    return res.end('Criando usuário');
+    return res.writeHead(201).end();
   }
   
-  return res.end('Hello world')
+  return res.writeHead(404).end('Not Found');
 })
 
 server.listen(3333)
