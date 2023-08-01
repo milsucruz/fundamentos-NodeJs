@@ -17,14 +17,23 @@ import http from 'node:http'
 // - PATCH => Atualizar uma informação específica de um recurso no back-end
 // - DELETE => Deletar um recurso do back-end
 
+const users = []
+
 const server = http.createServer((req, res) => {
   const {method, url} = req;
 
   if(method === 'GET' && url === '/users') {
-    return res.end('Lista de usuários');
+    return res
+    .setHeader('Content-Type', 'application/json')
+    .end(JSON.stringify(users));
   } 
 
   if(method === 'POST' && url === '/users') {
+    users.push({
+      id: 1,
+      name: 'Joe Doe',
+      email: 'joe@example.com'
+    })
     return res.end('Criando usuário');
   }
   
